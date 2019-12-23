@@ -2,12 +2,13 @@ import subprocess
 from functools import partial
 from multiprocessing.pool import Pool
 import os
+import sys
 import pandas as pd
 
-dataset_files_base = 'resources/parts/complete-190827/ldraw/parts/'
-dataset_path = 'data/dataset-15/dataset.csv'
+dataset_files_base = 'ldraw/parts/'
+dataset_path = '../DATA/LEGO-brick-images/dataset.csv'
 config_fname = 'augmentation.json'
-output_path = 'data/dataset-15/images'
+output_path = '../DATA/LEGO-brick-images/'
 number_of_images = 2000
 
 df = pd.read_csv(dataset_path, encoding='utf-8', index_col='id')
@@ -25,8 +26,11 @@ def _render(idx_fname, output_path: str, list_length: int, config_fname: str, nu
         print('{} ({}/{}): already exists'.format(fname, index + 1, list_length))
         return
     print('{} ({}/{}): render'.format(fname, index + 1, list_length))
+    command_path =""
+    if sys.platform =='darwin':
+        command_path ="/Applications/Blender/blender.app/Contents/MacOS/" # required for OSX
     render_script_path = os.path.join(os.path.dirname(__file__), 'blender', 'render.py')
-    command = 'blender -b -P ' + render_script_path + ' --' \
+    command = command_path + 'blender -b -P ' + render_script_path + ' --' \
               + ' -i ' + fname \
               + ' -c ' + config_fname \
               + ' -s ' + os.path.join(output_path, part_id) \
@@ -38,7 +42,7 @@ def _render(idx_fname, output_path: str, list_length: int, config_fname: str, nu
     except subprocess.TimeoutExpired as e:
         print(e)
     finally:
-        p.wait(timeout=5)
+        p.wait(timeout=30)
 
 
 with Pool(1) as p:
