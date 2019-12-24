@@ -4,14 +4,25 @@ from multiprocessing.pool import Pool
 import os
 import sys
 import pandas as pd
+import wget
+from pathlib import Path
+import zipfile
 
+ldraw_fname = "complete.zip"
 dataset_files_base = 'ldraw/parts/'
-dataset_path = '../DATA/LEGO-brick-images/dataset.csv'
+dataset_path = '../DATA/LEGO-brick-images/parts.csv'
 config_fname = 'augmentation.json'
 output_path = '../DATA/LEGO-brick-images/'
+url = "http://www.ldraw.org/library/updates/complete.zip"
+
+if (Path(dataset_files_base).is_dir() ==False):
+    wget.download(url,ldraw_fname )
+    with zipfile.ZipFile(ldraw_fname,"r") as zip_ref:
+        zip_ref.extractall("")
+    exit (0)
 number_of_images = 2000
 
-df = pd.read_csv(dataset_path, encoding='utf-8', index_col='id')
+df = pd.read_csv(dataset_path, encoding='utf-8', index_col='part_num')
 
 dataset_files = [os.path.join(dataset_files_base, str(f) + '.dat') for f in df.index]
 # dataset_files = dataset_files[:20]
