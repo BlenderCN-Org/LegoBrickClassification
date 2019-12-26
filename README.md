@@ -7,23 +7,17 @@ This project is inspired by [Daniel West's project][4] to build a Lego sorter
 
 This YouTube video is a nice explantion of the three steps to build a Lego sorter
 
-
 <img align="right" width="100" height="100" src="Logos/Python.jpg">
-
 
 
 #### 1.  [Build a dataset to train the AI][1] using the [Ldraw Library][3] and use [blender][2] to render the image, I have adapted this from J Theiner python script.
 
-<img align="right" width="200" height="128" src="Logos/Ldraw.jpg">
-<img align="right" width="100" height="100" src="Logos/Blender.png">
-
-
+<img align="right" width="100" height="50" src="Logos/Ldraw.jpg">
+<img align="right" width="50" height="50" src="Logos/Blender.png">
 
 #### 2.  Train the AI using Tensorflow using [colab][6] using the cloud GPU to produce the classifier model. 
 
-
-<img align="right" width="100" height="100" src="Logos/Tensorflow.jpg">
-
+<img align="right" width="50" height="50" src="Logos/Tensorflow.jpg">
 
 #### 3.  Build a image capature and classification process using the classifier model using the OpenMV 
 
@@ -34,8 +28,8 @@ Using the OpenMV it is hoped that the AI deployed onto the local machine.
  
  
 
-<img align="right" width="200" height="200" src="Logos/OpenMV.jpg">
-<img align="right" width="200" height="200" src="Logos/OpenMV_Logo.png">
+<img align="right" width="100" height="100" src="Logos/OpenMV.jpg">
+<img align="right" width="100" height="100" src="Logos/OpenMV_Logo.png">
 
 
 
