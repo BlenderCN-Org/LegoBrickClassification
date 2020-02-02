@@ -32,12 +32,15 @@ Using the OpenMV it is hoped that the AI deployed onto the local machine.
 <img align="right" width="100" height="100" src="Logos/OpenMV_Logo.png">
 
 
+Single Brick rendering
+
+ /Applications/blender.app/Contents/MacOS/blender -b -P dataset/blender/render.py -- -i 10p09.dat --save ./ --images_per_brick 1 --config thumbnail.json
 
 
 
 ## Requirements / Installation
 
-##### Blender 2.79 + ImportLDraw
+##### Blender 2.81 + ImportLDraw
 ##### colab
 ##### Tensorflow
 ##### Python
